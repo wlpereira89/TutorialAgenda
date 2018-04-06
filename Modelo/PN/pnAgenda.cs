@@ -14,7 +14,10 @@ namespace Modelo.PN
             try
             {
                 AgendaEntities db = new AgendaEntities();
-
+                if (pnAgenda.Pesquisar(p.Email)!=null)
+                {
+                    return false;
+                }
                 db.Pessoas.Add(p);
                 db.SaveChanges();
 
@@ -55,7 +58,10 @@ namespace Modelo.PN
 
                 pa = db.Pessoas.Find(p.Email);
 
-                db.Pessoas.Remove(pa);
+                if (pa != null)
+                    db.Pessoas.Remove(pa);
+                else
+                    return false;
 
                 db.SaveChanges();
 
@@ -66,5 +72,20 @@ namespace Modelo.PN
                 throw;
             }
         }
+        public static Pessoa Pesquisar(String email)
+        {
+            try
+            {
+                AgendaEntities db = new AgendaEntities();
+                
+
+                return db.Pessoas.Find(email);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }
