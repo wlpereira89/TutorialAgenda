@@ -35,7 +35,7 @@ namespace Modelo.PN
                 AgendaEntities db = new AgendaEntities();
                 Pessoa pa = new Pessoa();
 
-                pa = db.Pessoas.Find(p.Email);
+                pa = db.Pessoas.Find(p.UserID);
 
                 pa.Idade = p.Idade;
                 pa.Nome = p.Nome;
@@ -86,6 +86,31 @@ namespace Modelo.PN
                 throw;
             }
         }
+        public static List<Pessoa> Listar()
+        {
+            try
+            {
+                AgendaEntities db = new AgendaEntities();
+                return db.Pessoas.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public static Pessoa Pesquisar(Guid userid)
+        {
+            try
+            {
+                AgendaEntities db = new AgendaEntities();
 
+
+                return db.Pessoas.Find(userid);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

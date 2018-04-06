@@ -17,5 +17,6 @@ namespace Modelo.DAO
         public string Email { get; set; }
         public string Nome { get; set; }
         public Nullable<int> Idade { get; set; }
+        public System.Guid UserID { get; set; }
     }
 }

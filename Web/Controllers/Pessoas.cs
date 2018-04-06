@@ -7,17 +7,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Modelo.DAO;
+using Modelo.PN;
 
 namespace Web.Controllers
 {
     public class Pessoas : Controller
-    {
-        private AgendaEntities db = new AgendaEntities();
-
+    {      
         // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Pessoas.ToList());
+            return View(pnAgenda.Listar());
         }
 
         // GET: Pessoas/Details/5
@@ -27,7 +26,7 @@ namespace Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoas.Find(id);
+            Pessoa pessoa = pnAgenda.Pesquisar(new Guid (id));
             if (pessoa == null)
             {
                 return HttpNotFound();
@@ -50,8 +49,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Pessoas.Add(pessoa);
-                db.SaveChanges();
+                pnAgenda.Inserir(pessoa);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +63,7 @@ namespace Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoas.Find(id);
+            Pessoa pessoa = pnAgenda.Pesquisar(new Guid (id));
             if (pessoa == null)
             {
                 return HttpNotFound();
@@ -78,12 +76,11 @@ namespace Web.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Email,Nome,Idade")] Pessoa pessoa)
+        public ActionResult Edit([Bind(Include = "Email,Nome,Idade, UserID")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pessoa).State = EntityState.Modified;
-                db.SaveChanges();
+                pnAgenda.Alterar(pessoa);
                 return RedirectToAction("Index");
             }
             return View(pessoa);
@@ -96,7 +93,7 @@ namespace Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pessoa pessoa = db.Pessoas.Find(id);
+            Pessoa pessoa = pnAgenda.Pesquisar(new Guid (id));
             if (pessoa == null)
             {
                 return HttpNotFound();
@@ -109,9 +106,8 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Pessoa pessoa = db.Pessoas.Find(id);
-            db.Pessoas.Remove(pessoa);
-            db.SaveChanges();
+            Pessoa pessoa = pnAgenda.Pesquisar(new Guid(id));
+            pnAgenda.Excluir(pessoa);
             return RedirectToAction("Index");
         }
 
@@ -119,7 +115,7 @@ namespace Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                // db.Dispose();
             }
             base.Dispose(disposing);
         }

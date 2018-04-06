@@ -1,6 +1,8 @@
 ﻿CREATE TABLE [dbo].[Pessoas]
 (
-	[Email] VARCHAR(50) NOT NULL PRIMARY KEY, 
+	[UserID] UNIQUEIDENTIFIER NOT NULL, 
+	[Email] VARCHAR(50) NOT NULL , 
     [Nome] VARCHAR(50) NULL, 
-    [Idade] INT NULL
+    [Idade] INT NULL,     
+    PRIMARY KEY ([UserID])
 )
