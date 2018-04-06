@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="6be538af-b218-4acd-85d7-dc93d07dd3be" ChangeDateTime="04/06/2018 14:38:50">
+    <Property Name="ElementName" Value="[dbo].[Pessoas].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Pessoas]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Email" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="68a3e96c-5ff6-48c0-b029-d56174906647" ChangeDateTime="04/06/2018 14:42:48">
+    <Property Name="ElementName" Value="[dbo].[Contatos].[Nome]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contatos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TipoContato" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0728a3b7-ed0a-4874-8234-87dcf309f047" ChangeDateTime="04/06/2018 14:43:03">
+    <Property Name="ElementName" Value="[dbo].[Contatos].[Idade]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Contatos]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="telefone" />
+  </Operation>
+</Operations>

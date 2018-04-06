@@ -58,4 +58,11 @@
   <ItemGroup>
     <Folder Include="Properties" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Pessoas.sql" />
+    <Build Include="Contatos.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AgendaDB.refactorlog" />
+  </ItemGroup>
 </Project>
