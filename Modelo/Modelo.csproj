@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,11 +50,56 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAO\Agenda.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agenda.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Agenda.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agenda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Agenda.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agenda.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Contato.cs">
+      <DependentUpon>Agenda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Pessoa.cs">
+      <DependentUpon>Agenda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PN\pnAgenda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="DAO\Agenda.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Agenda.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAO\Agenda.edmx.diagram">
+      <DependentUpon>Agenda.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="DAO\Agenda.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Agenda.edmx</DependentUpon>
+      <LastGenOutput>Agenda.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAO\Agenda.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Agenda.edmx</DependentUpon>
+      <LastGenOutput>Agenda.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
